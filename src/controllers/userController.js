@@ -45,14 +45,14 @@ async function loginUser(req, res) {
         }
         
         if(!body.email || !body.password) {
-            res.status(400).send("Please provide your correct email and password");
+            return res.status(400).send("Please provide your correct email and password");
         }
         
         req.user = body;
 
         const result = await service.findUser(req.user);
         console.log("Result =", result);
-        if(!result) res.status(400).send("Please provide correct information");
+        if(result == "ip") return res.status(400).send("Please provide your correct email and password");
         else 
         res.status(200).send("User logged in successfully");
     }

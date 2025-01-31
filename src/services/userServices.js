@@ -78,6 +78,7 @@ async function verifyEmailAndPassword(email, password) {
 //* Delete a specific sale record of a logged in user 
 async function deleteASpecificSaleRecord(id) {
     const deleteResult = await Sale.findByIdAndDelete({ _id : id });
+    console.log('deleteResult :', deleteResult);
     if(deleteResult == null) return "";
     return deleteResult;
 };
